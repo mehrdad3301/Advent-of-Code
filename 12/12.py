@@ -1,3 +1,4 @@
+from collections import defaultdict
 def DFS(x , marked , repeat) : 
 
 	if x == 'end' : 	
@@ -17,11 +18,11 @@ def DFS(x , marked , repeat) :
 	return paths 
 
 with open('in') as f : 
-	data = {} 
+	data = defaultdict(list)  
 	for line in f : 
 		u , v = line.strip().split('-') 
-		data[u] = [v] if u not in data else data[u] + [v]  
-		data[v] = [u] if v not in data else data[v] + [u]  
+		data[u] += [v] 
+		data[v] += [u]
 
 
 print(DFS('start' , set() , False))
