@@ -21,8 +21,6 @@ class Bits :
 	
 	def get(self , n) : 
 		self.num_bits -= n 
-		if self.num_bits < 0 : 
-			return 0 
 		vl = self.data >> self.num_bits 
 		self.data &= 2 ** self.num_bits - 1 	
 		return vl
