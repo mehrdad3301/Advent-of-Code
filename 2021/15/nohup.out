@@ -1,0 +1,12 @@
+[I 19:53:27.273 NotebookApp] Serving notebooks from local directory: /home/moxitron/myFiles/AoC/2021/15
+[I 19:53:27.273 NotebookApp] Jupyter Notebook 6.4.5 is running at:
+[I 19:53:27.273 NotebookApp] http://localhost:8888/?token=6b2f0827e05b7f2c18290189caf2d24dd096fc8926ca86ea
+[I 19:53:27.273 NotebookApp]  or http://127.0.0.1:8888/?token=6b2f0827e05b7f2c18290189caf2d24dd096fc8926ca86ea
+[I 19:53:27.273 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 19:53:27.418 NotebookApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///home/moxitron/.local/share/jupyter/runtime/nbserver-45677-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8888/?token=6b2f0827e05b7f2c18290189caf2d24dd096fc8926ca86ea
+     or http://127.0.0.1:8888/?token=6b2f0827e05b7f2c18290189caf2d24dd096fc8926ca86ea
