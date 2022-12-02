@@ -27,18 +27,10 @@ def choose_move(game) :
 	else :
 		return rules[opmove][win]
 
-
-
-
 with open('in' , 'r') as f : 
 
 	games = [moves for moves in f.read().split("\n")]
 	games = list(map(str.split, games))[:-1]
 
-
-s2, s1 = 0, 0
-for g in games : 
-	s1 += solve(g)
-	s2 += solve([g[0], choose_move(g)])
-
-print(s1, s2)
+print(sum(solve(g) for g in games))
+print(sum(solve([g[0], choose_move(g)]) for g in games))
