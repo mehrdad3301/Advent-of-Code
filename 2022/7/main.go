@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type Node interface {
 	Type() string
@@ -18,16 +16,17 @@ type Dir struct {
 
 func (d *Dir) Type() string { return "DIR" }
 
-func (d *Dir) size() int {
-	return 0
-}
-
 type File struct {
 	Name string
 	Size int
 }
 
 func (f *File) Type() string { return "FILE" }
+
+var (
+	memSize   = 70000000
+	neededMem = 30000000
+)
 
 func main() {
 
@@ -43,7 +42,8 @@ func main() {
 	}
 	findSize(root)
 	fmt.Println(dfs1(root))
-	fmt.Println(dfs2(root, 30000000-(70000000-root.Size)))
+	fmt.Println(dfs2(root, neededMem-(memSize-root.Size)))
+	//tree(root, "")
 }
 
 func dfs1(d *Dir) int {
@@ -58,19 +58,19 @@ func dfs1(d *Dir) int {
 	return sum
 }
 
-func dfs2(d *Dir, needed int) int {
+func dfs2(d *Dir, neededFreed int) int {
 
-	min := 70000000
-	if d.Size < needed {
+	min := memSize
+	if d.Size < neededFreed {
 		return min
 	}
 	for _, c := range d.Children {
-		s := dfs2(c, needed)
+		s := dfs2(c, neededFreed)
 		if s < min {
 			min = s
 		}
 	}
-	if min == 70000000 {
+	if min == memSize {
 		return d.Size
 	}
 	return min
@@ -86,11 +86,10 @@ func (currDir *Dir) moveDir(target string) *Dir {
 			dir = dir.Parent
 		}
 		return dir
-	} else {
-		for _, dir := range currDir.Children {
-			if target == dir.Name {
-				return dir
-			}
+	}
+	for _, dir := range currDir.Children {
+		if target == dir.Name {
+			return dir
 		}
 	}
 	return currDir
@@ -139,5 +138,4 @@ func tree(d *Dir, tab string) {
 	for _, c := range d.Children {
 		tree(c, tab+"  ")
 	}
-
 }
